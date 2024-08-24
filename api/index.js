@@ -6,14 +6,16 @@ import authRoutes from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 import path from 'path';
 dotenv.config();
-MONGO= 'mongodb+srv://taruntamada19:tarun@mern.5djeh.mongodb.net/mern-auth?retryWrites=true&w=majority'
 mongoose
-  .connect(process.env.MONGO)
+  .connect("mongodb://localhost:27017/mernauth", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log("DB Connetion Successfull");
   })
   .catch((err) => {
-    console.log(err);
+    console.log(err.message);
   });
 
 const __dirname = path.resolve();
